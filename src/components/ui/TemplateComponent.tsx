@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { TemplateIcon, UIBlocksIcon, UIKitIcon } from '../icons/Icons';
 import {
   ButtonComponent,
@@ -10,7 +11,15 @@ import {
 import { cn } from '@/lib/utils';
 
 export const TemplateComponent = () => {
-  const images = [
+  const [active, setActive] = useState<string>('templates');
+  console.log(active);
+  const currentPage = ({ page }: { page: string }) => {
+    setActive(page);
+  };
+
+  // Template Images
+
+  const templateImages = [
     {
       src: '/accounting.png',
       alt: 'Accounting template Image',
@@ -24,7 +33,7 @@ export const TemplateComponent = () => {
       alt: 'Deal template Image',
     },
   ];
-  const images2 = [
+  const templateImages2 = [
     {
       src: '/award.png',
       alt: 'Studio template Image',
@@ -38,7 +47,7 @@ export const TemplateComponent = () => {
       alt: 'Accounting template Image',
     },
   ];
-  const images3 = [
+  const templateImages3 = [
     {
       src: '/deal.png',
       alt: 'Deal template Image',
@@ -52,28 +61,109 @@ export const TemplateComponent = () => {
       alt: 'Studio template Image',
     },
   ];
+
+  // UI KIT Images
+  const kitImages = [
+    { src: '/img1.png', alt: 'UIKitImages 1' },
+    { src: '/img2.png', alt: 'UIKitImages 2' },
+    { src: '/img3.png', alt: 'UIKitImages 3' },
+  ];
+  const kitImages2 = [
+    { src: '/img2.png', alt: 'UIKitImages 2' },
+    { src: '/img3.png', alt: 'UIKitImages 3' },
+    { src: '/img1.png', alt: 'UIKitImages 1' },
+  ];
+  const kitImages3 = [
+    { src: '/img3.png', alt: 'UIKitImages 3' },
+    { src: '/img1.png', alt: 'UIKitImages 1' },
+    { src: '/img2.png', alt: 'UIKitImages 2' },
+  ];
+
+  // UI BLOCK Images
+  const BlockImages = [
+    { src: '/blockImg1.png', alt: 'blockImg1.png' },
+    { src: '/blockImg2.png', alt: 'blockImg2.png' },
+    { src: '/blockImg3.png', alt: 'blockImg3.png' },
+    { src: '/blockImg4.png', alt: 'blockImg4.png' },
+    { src: '/blockImg5.png', alt: 'blockImg5.png' },
+    { src: '/blockImg7.png', alt: 'blockImg7.png' },
+    { src: '/blockImg8.png', alt: 'blockImg8.png' },
+    { src: '/blockImg9.png', alt: 'blockImg9.png' },
+    { src: '/blockImg10.png', alt: 'blockImg10.png' },
+    { src: '/blockImg11.png', alt: 'blockImg11.png' },
+    { src: '/blockImg12.png', alt: 'blockImg12.png' },
+    { src: '/blockImg13.png', alt: 'blockImg13.png' },
+    { src: '/blockImg14.png', alt: 'blockImg14.png' },
+    { src: '/blockImg15.png', alt: 'blockImg15.png' },
+  ];
+  const BlockImages2 = [
+    { src: '/blockImg7.png', alt: 'blockImg7.png' },
+    { src: '/blockImg3.png', alt: 'blockImg3.png' },
+    { src: '/blockImg12.png', alt: 'blockImg12.png' },
+    { src: '/blockImg1.png', alt: 'blockImg1.png' },
+    { src: '/blockImg14.png', alt: 'blockImg14.png' },
+    { src: '/blockImg5.png', alt: 'blockImg5.png' },
+    { src: '/blockImg10.png', alt: 'blockImg10.png' },
+    { src: '/blockImg9.png', alt: 'blockImg9.png' },
+    { src: '/blockImg2.png', alt: 'blockImg2.png' },
+    { src: '/blockImg13.png', alt: 'blockImg13.png' },
+    { src: '/blockImg8.png', alt: 'blockImg8.png' },
+    { src: '/blockImg4.png', alt: 'blockImg4.png' },
+    { src: '/blockImg15.png', alt: 'blockImg15.png' },
+    { src: '/blockImg11.png', alt: 'blockImg11.png' },
+  ];
+
+  const BlockImages3 = [
+    { src: '/blockImg14.png', alt: 'blockImg14.png' },
+    { src: '/blockImg3.png', alt: 'blockImg3.png' },
+    { src: '/blockImg11.png', alt: 'blockImg11.png' },
+    { src: '/blockImg8.png', alt: 'blockImg8.png' },
+    { src: '/blockImg1.png', alt: 'blockImg1.png' },
+    { src: '/blockImg13.png', alt: 'blockImg13.png' },
+    { src: '/blockImg7.png', alt: 'blockImg7.png' },
+    { src: '/blockImg10.png', alt: 'blockImg10.png' },
+    { src: '/blockImg4.png', alt: 'blockImg4.png' },
+    { src: '/blockImg15.png', alt: 'blockImg15.png' },
+    { src: '/blockImg2.png', alt: 'blockImg2.png' },
+    { src: '/blockImg9.png', alt: 'blockImg9.png' },
+    { src: '/blockImg5.png', alt: 'blockImg5.png' },
+    { src: '/blockImg12.png', alt: 'blockImg12.png' },
+  ];
+
   return (
-    <div className="bg-tailwind-100 justify- flex w-full flex-col items-center gap-4 py-10">
+    <div className="bg-tailwind-100 flex w-full flex-col items-center justify-center gap-3 py-10">
       {/* Buttons Row */}
       <div
         className={cn(
-          'divide-lines-100 relative flex w-full items-center justify-between divide-x select-none',
-          // BEFORE CLASSNAME
-          'before:bg-lines-100 before:absolute before:top-0 before:h-px before:w-full before:content-[""]',
-          // AFTER CLASSNAME
-          'after:bg-lines-100 after:absolute after:bottom-0 after:h-px after:w-full after:content-[""]'
+          'divide-lines-100 sm:overflow-x-none relative flex w-full items-center justify-between divide-x select-none max-sm:overflow-x-scroll',
+          // BEFORE
+          'before:bg-lines-100 before:absolute before:top-0 before:h-px before:w-screen before:content-[""] sm:before:left-[calc(50%-50vw)]',
+          // AFTER
+          'after:bg-lines-100 after:absolute after:bottom-0 after:left-[calc(50%-50vw)] after:h-px after:w-screen after:content-[""]'
         )}
       >
         {/* First Button */}
-        <ButtonComponent>
+        <ButtonComponent
+          className={cn('group', active == 'templates' ? 'bg-pink-500/5' : null)}
+          onClick={() => currentPage({ page: 'templates' })}
+        >
           {/* ICON */}
           <ButtonIcon>
-            <TemplateIcon className="text-neutral-500" />
+            <TemplateIcon
+              className={cn(
+                'text-neutral-200 duration-200 group-hover:-translate-y-0.5',
+                active == 'templates' ? 'text-pink-500' : null
+              )}
+            />
           </ButtonIcon>
           {/* TEXT CONTENT */}
           <ButtonHeader>
             {/* TITLE */}
-            <ButtonTitle className="text-neutral-200">Templates</ButtonTitle>
+            <ButtonTitle
+              className={cn(active == 'templates' ? 'text-pink-500' : 'text-neutral-200')}
+            >
+              Templates
+            </ButtonTitle>
             {/* SUBTITLE */}
             <ButtonSubTitle>
               Visually stunning, easy to customize site templates built with React and Next.js.
@@ -82,15 +172,27 @@ export const TemplateComponent = () => {
         </ButtonComponent>
 
         {/* Second Button */}
-        <ButtonComponent>
+        <ButtonComponent
+          className={cn('group', active == 'UIBlocks' ? 'bg-violet-500/5' : null)}
+          onClick={() => currentPage({ page: 'UIBlocks' })}
+        >
           {/* ICON */}
           <ButtonIcon>
-            <UIBlocksIcon className="text-neutral-500" />
+            <UIBlocksIcon
+              className={cn(
+                'text-neutral-200 duration-200',
+                active == 'UIBlocks' ? 'text-violet-400' : null
+              )}
+            />
           </ButtonIcon>
           {/* TEXT CONTENT */}
           <ButtonHeader>
             {/* TITLE */}
-            <ButtonTitle className="text-neutral-200">Ui Blocks</ButtonTitle>
+            <ButtonTitle
+              className={cn(active == 'UIBlocks' ? 'text-violet-500' : 'text-neutral-200')}
+            >
+              Ui Blocks
+            </ButtonTitle>
             {/* SUBTITLE */}
             <ButtonSubTitle>
               Over 500+ professionally designed, fully responsive, expertly crafted components.
@@ -99,15 +201,27 @@ export const TemplateComponent = () => {
         </ButtonComponent>
 
         {/* Third Button */}
-        <ButtonComponent>
+        <ButtonComponent
+          className={cn('group', active == 'UIKits' ? 'bg-sky-500/5' : null)}
+          onClick={() => currentPage({ page: 'UIKits' })}
+        >
           {/* ICON */}
           <ButtonIcon>
-            <UIKitIcon className="text-neutral-500" />
+            <UIKitIcon
+              className={cn(
+                'text-neutral-200 duration-200',
+                active == 'UIKits' ? 'text-sky-500' : null
+              )}
+            />
           </ButtonIcon>
           {/* TEXT CONTENT */}
           <ButtonHeader>
             {/* TITLE */}
-            <ButtonTitle className="text-neutral-200">ui Kit</ButtonTitle>
+            <ButtonTitle
+              className={cn('text-neutral-200', active == 'UIKits' ? 'text-sky-500' : null)}
+            >
+              ui Kit
+            </ButtonTitle>
             {/* SUBTITLE */}
             <ButtonSubTitle>
               A starter kit for building your own component systems with React and Tailwind CSS.
@@ -120,31 +234,61 @@ export const TemplateComponent = () => {
         className={cn(
           'bg-lines-100/30 relative flex w-full items-center justify-center p-1.5',
           // BEFORE CLASSNAME
-          'before:bg-lines-100 before:absolute before:top-0 before:h-px before:w-full before:content-[""]',
+          'before:bg-lines-100 before:absolute before:top-0 before:left-[calc(50%-50vw)] before:h-px before:w-screen before:content-[""]',
           // AFTER CLASSNAME
-          'after:bg-lines-100 after:absolute after:bottom-0 after:h-px after:w-full after:content-[""]'
+          'after:bg-lines-100 after:absolute after:bottom-0 after:left-[calc(50%-50vw)] after:h-px after:w-screen after:content-[""]'
         )}
       >
         {/* Marquee Container */}
-        {/* rotate-x-55 rotate-y-0 -rotate-z-45 */}
-        <div className="bg-tailwind-100 grid h-130 w-full transform grid-cols-3 gap-18 overflow-hidden rounded-2xl border border-neutral-800/40 perspective-distant transform-3d">
-          <div className="animate-infinite-scroll bg-lines-100 col-span-1 flex rotate-x-55 rotate-y-0 -rotate-z-45 flex-col items-center justify-center gap-6 text-neutral-200 opacity-50">
-            {[...images, ...images, ...images].map((item, index) => (
-              <img src={item.src} alt={item.alt} key={index} />
-            ))}
-            <div />
-          </div>
-          <div className="bg-lines-100 animate-infinite-scroll-reverse col-span-1 flex rotate-x-55 rotate-y-0 -rotate-z-45 flex-col items-center justify-between gap-6 text-neutral-200 opacity-50 transform-3d">
-            {[...images2, ...images2, ...images2].map((item, index) => (
-              <img src={item.src} alt={item.alt} key={index} />
-            ))}
-            <div />
-          </div>
-          <div className="bg-lines-100 animate-infinite-scroll col-span-1 flex rotate-x-55 rotate-y-0 -rotate-z-45 flex-col items-center justify-between gap-6 text-neutral-200 opacity-50 transform-3d">
-            {[...images3, ...images3, ...images3].map((item, index) => (
-              <img src={item.src} alt={item.alt} key={index} />
-            ))}
-            <div />
+        <div className="bg-tailwind-100 relative h-100 w-full overflow-hidden rounded-2xl ring ring-neutral-800/40 perspective-distant transform-3d md:h-130">
+          <div className="absolute top-0 -right-20 grid h-full w-screen rotate-x-35 rotate-y-0 -rotate-z-50 rounded-2xl border-white">
+            <div className="grid w-full grid-cols-3 gap-10 rounded-2xl">
+              <div className="animate-infinite-scroll border-px border-lines-100/60 col-span-1 flex -translate-y-190 flex-col items-center justify-center gap-6 border-x text-neutral-200 opacity-50">
+                {active == 'templates' &&
+                  [...templateImages, ...templateImages, ...templateImages].map((item, index) => (
+                    <img src={item.src} alt={item.alt} key={index} />
+                  ))}
+                {active == 'UIBlocks' &&
+                  [...BlockImages, ...BlockImages, ...BlockImages].map((item, index) => (
+                    <img src={item.src} alt={item.alt} key={index} />
+                  ))}
+                {active == 'UIKits' &&
+                  [...kitImages, ...kitImages, ...kitImages].map((item, index) => (
+                    <img src={item.src} alt={item.alt} key={index} />
+                  ))}
+                <div />
+              </div>
+              <div className="animate-infinite-scroll-reverse border-whitetransform-3d border-px border-lines-100/60 col-span-1 flex flex-col items-center justify-between gap-6 border-x text-neutral-200 opacity-50">
+                {active == 'templates' &&
+                  [...templateImages2, ...templateImages2, ...templateImages2].map(
+                    (item, index) => <img src={item.src} alt={item.alt} key={index} />
+                  )}
+                {active == 'UIBlocks' &&
+                  [...BlockImages2, ...BlockImages2, ...BlockImages2].map((item, index) => (
+                    <img src={item.src} alt={item.alt} key={index} />
+                  ))}
+                {active == 'UIKits' &&
+                  [...kitImages2, ...kitImages2, ...kitImages2].map((item, index) => (
+                    <img src={item.src} alt={item.alt} key={index} />
+                  ))}
+                <div />
+              </div>
+              <div className="animate-infinite-scroll border-px border-lines-100/60 col-span-1 flex -translate-y-10 flex-col items-center justify-between gap-6 border-x text-neutral-200 opacity-50 transform-3d">
+                {active == 'templates' &&
+                  [...templateImages3, ...templateImages3, ...templateImages3].map(
+                    (item, index) => <img src={item.src} alt={item.alt} key={index} />
+                  )}
+                {active == 'UIBlocks' &&
+                  [...BlockImages3, ...BlockImages3, ...BlockImages3].map((item, index) => (
+                    <img src={item.src} alt={item.alt} key={index} />
+                  ))}
+                {active == 'UIKits' &&
+                  [...kitImages3, ...kitImages3, ...kitImages3].map((item, index) => (
+                    <img src={item.src} alt={item.alt} key={index} />
+                  ))}
+                <div />
+              </div>
+            </div>
           </div>
         </div>
       </div>
